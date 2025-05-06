@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
-use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
@@ -15,10 +13,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('is_completed', 'asc')
+        $tasks = Task::where('user_id', Auth::id())
+            ->orderBy('is_completed', 'asc')
             ->orderBy('due_date', 'asc')
             ->paginate(10);
-        
+
         return view('dashboard', compact('tasks'));
     }
 
