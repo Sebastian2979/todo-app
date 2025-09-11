@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 return [
 
@@ -8,31 +8,25 @@ return [
     |--------------------------------------------------------------------------
     | Trusted Proxies
     |--------------------------------------------------------------------------
-    |
-    | Hier kannst du die IP-Adressen deiner Proxy-Server eintragen.
-    | Mit "*" vertraust du allen Proxies (praktisch im Heimnetz oder
-    | beim Einsatz von Nginx Proxy Manager).
-    |
-    | Empfehlung: Für mehr Sicherheit später die konkrete IP deines
-    | NPM-Containers eintragen (z. B. "192.168.178.120").
-    |
+    | Trage hier deine Proxy-IP(s) ein. Für deinen IONOS NPM:
+    | z.B. '203.0.113.45' (ohne Port). Mehrere als Array.
     */
-
     'proxies' => '85.215.226.9',
 
     /*
     |--------------------------------------------------------------------------
     | Trusted Headers
     |--------------------------------------------------------------------------
-    |
-    | Diese Header geben an, welche Informationen Laravel auswertet,
-    | wenn die App hinter einem Proxy läuft (Host, Schema, Port, etc.).
-    |
-    | Normalerweise reicht HEADER_X_FORWARDED_ALL für Setups mit
-    | Nginx Proxy Manager vollkommen aus.
-    |
+    | Welche Forwarded-Header Laravel auswertet. "ALL" deckt das Übliche ab.
     */
-
     'headers' => Request::HEADER_X_FORWARDED_ALL,
 
+    // Alternativ, falls du die IDE-Warnung vermeiden willst:
+    // 'headers' =>
+    //     Request::HEADER_X_FORWARDED_FOR |
+    //     Request::HEADER_X_FORWARDED_HOST |
+    //     Request::HEADER_X_FORWARDED_PORT |
+    //     Request::HEADER_X_FORWARDED_PROTO |
+    //     Request::HEADER_X_FORWARDED_AWS_ELB,
 ];
+
