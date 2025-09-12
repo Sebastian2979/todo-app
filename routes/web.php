@@ -15,6 +15,18 @@ Route::get('/probe', function () {
     ]);
 });
 
+Route::get('/probe2', function () {
+    $count = session('count', 0) + 1;
+    session(['count' => $count]);
+
+    return response()->json([
+        'secure'       => request()->isSecure(),
+        'has_cookie'   => request()->hasCookie('laravel_session'),
+        'count'        => $count, // sollte bei jedem Reload um 1 steigen
+        'set_cookie?'  => 'Sieh in DevTools → Network → probe2 → Response Headers nach: Set-Cookie',
+    ]);
+});
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
