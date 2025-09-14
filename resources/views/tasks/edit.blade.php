@@ -27,7 +27,7 @@
                         <x-input-error :messages="$errors->get('title')" class="mt-2" />
                     </div>
                     <div class="mt-4">
-                        <x-primary-button>Submit</x-primary-button>
+                        <x-primary-button>Ändern</x-primary-button>
                     </div>    
                 </form>
             </div>
