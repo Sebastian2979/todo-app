@@ -1,4 +1,4 @@
-<div class="flex items-center justify-between p-4 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<div class="flex items-center justify-between p-4 mb-2 bg-white rounded-lg shadow-md">
     <!-- Linke Seite: Checkbox + Titel + Due Date -->
     <div class="flex items-center gap-4">
         <!-- Checkbox Toggle Completed or Not -->
@@ -17,16 +17,16 @@
         <div class="flex flex-col">
             <!-- Titel -->
             <span
-                class="{{ $task->is_completed ? 'line-through text-gray-400' : 'text-gray-900 dark:text-white' }} font-medium">
+                class="{{ $task->is_completed ? 'line-through text-gray-400' : 'text-gray-900' }} font-medium">
                 {{ $task->title }}
             </span>
             <!-- Description -->
             <span
-                class="{{ $task->is_completed ? 'line-through text-gray-400' : 'text-gray-900 dark:text-white' }} font-thin">
+                class="{{ $task->is_completed ? 'line-through text-gray-400' : 'text-gray-900' }} font-thin">
                 {{ $task->description }}
             </span>
             <!-- Fälligkeitsdatum -->
-            <span class="text-sm text-gray-500 dark:text-gray-400">
+            <span class="text-sm text-gray-500">
                 Fällig: {{ \Carbon\Carbon::parse($task->due_date)->format('d.m.Y H:i') }}
             </span>
         </div>
